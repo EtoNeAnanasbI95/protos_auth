@@ -1,7 +1,5 @@
 syntax = 'proto3';
 
-import "google/protobuf/empty.proto";
-
 package auth;
 
 option go_package = "EtoNeAnanasbI95.auth.v1;authv1";
@@ -10,7 +8,7 @@ service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc Refresh (TokenRequest) returns (LoginResponse);
-  rpc Validate (TokenRequest) returns (google.protobuf.Empty);
+  rpc Validate (TokenRequest) returns (ValidateRequest);
 }
 
 message RegisterRequest {
@@ -34,4 +32,8 @@ message LoginResponse {
 
 message TokenRequest {
   string token = 1;
+}
+
+message ValidateRequest {
+  int64 uid = 1;
 }
